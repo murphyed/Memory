@@ -10,37 +10,45 @@
 </head>
 
 <body>
-  <section class="container">
-    <div class="subContainer">
-      <h1>Memory</h1>
-      <h2>a visual representation of how data is stored under the hood.</h2>
-    </div>
-    <div class="options">
-      <div class="option-type">
-        <label for="bit-type">Select a bit type:</label>
-        <select name="bit-type" id="bit-type" class="custom-select">
-          <option value="32">32-Bit</option>
-          <option value="64">64-Bit</option>
-        </select>
+  <main>
+    <section class="container">
+      <div class="subContainer">
+        <h1>Memory</h1>
+        <h2>a visual representation of how data is stored under the hood.</h2>
       </div>
-      <div class="option-type">
-        <label for="bit-type">Select a data structure:</label>
-        <select name="bit-type" id="bit-type">
-          <option value="array">Array</option>
-          <option value="object">Object</option>
-        </select>
+      <div class="options" id="options">
+        <div class="option-type">
+          <label for="bit-type">Select a bit type:</label>
+          <select name="bit-type" id="bit-type" class="custom-select">
+            <option value="32">32-Bit</option>
+            <option value="64">64-Bit</option>
+          </select>
+        </div>
+        <div class="option-type">
+          <label for="bit-type">Select a data structure:</label>
+          <select name="bit-type" id="bit-type">
+            <option value="array">Array</option>
+            <option value="object">Object</option>
+          </select>
+        </div>
+        <div class="userInput">
+          <input type="text" name="userValue" id="userValue" placeholder="Add to memory">
+        </div>
+        <div class="userButton">
+          <button id="add">
+            <div class="lineOne" id="lineOne"></div>
+            <div class="lineTwo" id="lineTwo"></div>
+          </button>
+        </div>
       </div>
-      <div class="userInput">
-        <input type="text" name="userValue" id="userValue" placeholder="Add to memory">
+    </section>
+    <section class="container-two">
+      <div class="controls"></div>
+      <div class="memoryContainer">
+        <div class="memory"></div>
       </div>
-      <div class="userButton">
-        <button id="add">
-          <div class="lineOne" id="lineOne"></div>
-          <div class="lineTwo" id="lineTwo"></div>
-        </button>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
   <script src="./script.js"></script>
 </body>
 

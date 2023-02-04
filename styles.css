@@ -7,9 +7,11 @@
 
 body {
   background-color: #2c3333;
+}
+
+main {
+  overflow-x: hidden;
   display: flex;
-  height: 100vh;
-  width: 95vw;
 }
 
 .container {
@@ -18,11 +20,26 @@ body {
   background-color: #a5c9ca;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
+  justify-content: space-evenly;
+  min-height: 100vh;
+  min-width: 95vw;
   gap: 5rem;
-  border-radius: 0 5rem 4rem 0;
+  border-radius: 0 4rem 4rem 0;
+}
+
+.container-two {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  align-items: center;
+  flex-direction: column;
+  min-width: fit-content;
+  min-height: fit-content;
+  border: 2px solid #e7f6f2;
+  margin-left: 5rem;
 }
 
 .subContainer {
@@ -141,17 +158,18 @@ button {
   background-color: #a5c9ca;
   width: 2.5px;
   border-radius: 2rem;
-  -webkit-animation-name: lineOneRemove;
-  animation-name: lineOneRemove;
-  -webkit-animation-duration: 800ms;
-  animation-duration: 800ms;
-  -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
-  -webkit-transition: 800ms;
-  -o-transition: 800ms;
-  transition: 800ms;
+  -webkit-transform: rotate(0deg) translateX(0px);
+  -ms-transform: rotate(0deg) translateX(0px);
+  transform: rotate(0deg) translateX(0px);
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+  -webkit-animation: 1000ms cubic-bezier(0.175, 0.885, 0.32, 1.275)
+    lineOneRemove;
+  animation: 1000ms cubic-bezier(0.175, 0.885, 0.32, 1.275) lineOneRemove;
+  -webkit-transition: -webkit-transform;
+  -o-transition: transform;
+  transition: transform;
 }
 
 .lineTwo {
@@ -159,144 +177,159 @@ button {
   background-color: #a5c9ca;
   width: 2.5px;
   border-radius: 2rem;
-  -webkit-transform: translateX(-2.5px) rotate(90deg);
-  -ms-transform: translateX(-2.5px) rotate(90deg);
-  transform: translateX(-2.5px) rotate(90deg);
-  -webkit-animation-name: lineTwoRemove;
-  animation-name: lineTwoRemove;
-  -webkit-animation-duration: 800ms;
-  animation-duration: 800ms;
-  -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
-  -webkit-transition: 800ms;
-  -o-transition: 800ms;
-  transition: 800ms;
+  -webkit-transform: translateX(-2.5px) translateY(0px) rotate(90deg) scaleY(1);
+  -ms-transform: translateX(-2.5px) translateY(0px) rotate(90deg) scaleY(1);
+  transform: translateX(-2.5px) translateY(0px) rotate(90deg) scaleY(1);
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+  -webkit-animation: 1000ms cubic-bezier(0.175, 0.885, 0.32, 1.275)
+    lineTwoRemove;
+  animation: 1000ms cubic-bezier(0.175, 0.885, 0.32, 1.275) lineTwoRemove;
+  -webkit-transition: -webkit-transform;
+  -o-transition: transform;
+  transition: transform;
 }
 
 .lineOneAdded {
-  height: 10px;
-  -webkit-transform: translateX(-1.5px) translateY(13.5px) rotate(320deg);
-  -ms-transform: translateX(-1.5px) translateY(13.5px) rotate(320deg);
-  transform: translateX(-1.5px) translateY(13.5px) rotate(320deg);
-  -webkit-animation-name: lineOne;
-  animation-name: lineOne;
-  -webkit-animation-duration: 800ms;
-  animation-duration: 800ms;
-  -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
-  -webkit-transition: 800ms;
-  -o-transition: 800ms;
-  transition: 800ms;
+  -webkit-transform: rotate(25deg) translateX(6.5px);
+  -ms-transform: rotate(25deg) translateX(6.5px);
+  transform: rotate(25deg) translateX(6.5px);
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+  -webkit-animation: 1000ms cubic-bezier(0.175, 0.885, 0.32, 1.275) lineOne;
+  animation: 1000ms cubic-bezier(0.175, 0.885, 0.32, 1.275) lineOne;
+  -webkit-transition: -webkit-transform;
+  -o-transition: transform;
+  transition: transform;
 }
 
 .lineTwoAdded {
-  -webkit-transform: translateX(5px) translateY(0px) rotate(390deg);
-  -ms-transform: translateX(5px) translateY(0px) rotate(390deg);
-  transform: translateX(5px) translateY(0px) rotate(390deg);
-  -webkit-animation-name: lineTwo;
-  animation-name: lineTwo;
-  -webkit-animation-duration: 800ms;
-  animation-duration: 800ms;
-  -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
-  -webkit-transition: 800ms;
-  -o-transition: 800ms;
-  transition: 800ms;
+  -webkit-transform: translateX(-4.5px) translateY(8px) rotate(510deg)
+    scaleY(0.5);
+  -ms-transform: translateX(-4.5px) translateY(8px) rotate(510deg) scaleY(0.5);
+  transform: translateX(-4.5px) translateY(8px) rotate(510deg) scaleY(0.5);
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+  -webkit-animation: 1000ms cubic-bezier(0.175, 0.885, 0.32, 1.275) lineTwo;
+  animation: 1000ms cubic-bezier(0.175, 0.885, 0.32, 1.275) lineTwo;
+  -webkit-transition: -webkit-transform;
+  -o-transition: transform;
+  transition: transform;
 }
 
 @-webkit-keyframes lineOne {
   0% {
-    height: 25px;
-    -webkit-transform: translateX(0) rotate(0);
-    transform: translateX(0) rotate(0);
+    -webkit-transform: rotate(0) translateX(0);
+    transform: rotate(0) translateX(0);
   }
   100% {
-    height: 10px;
-    -webkit-transform: translateX(-1.5px) translateY(13.5px) rotate(320deg);
-    transform: translateX(-1.5px) translateY(13.5px) rotate(320deg);
+    -webkit-transform: rotate(25deg) translateX(6.5px);
+    transform: rotate(25deg) translateX(6.5px);
   }
 }
 @keyframes lineOne {
   0% {
-    height: 25px;
-    -webkit-transform: translateX(0) rotate(0);
-    transform: translateX(0) rotate(0);
+    -webkit-transform: rotate(0) translateX(0);
+    transform: rotate(0) translateX(0);
   }
   100% {
-    height: 10px;
-    -webkit-transform: translateX(-1.5px) translateY(13.5px) rotate(320deg);
-    transform: translateX(-1.5px) translateY(13.5px) rotate(320deg);
+    -webkit-transform: rotate(25deg) translateX(6.5px);
+    transform: rotate(25deg) translateX(6.5px);
   }
 }
 
 @-webkit-keyframes lineOneRemove {
   0% {
-    height: 10px;
-    -webkit-transform: translateX(-1.5px) translateY(13.5px) rotate(320deg);
-    transform: translateX(-1.5px) translateY(13.5px) rotate(320deg);
+    -webkit-transform: rotate(25deg) translateX(6.5px);
+    transform: rotate(25deg) translateX(6.5px);
   }
   100% {
-    height: 25px;
-    -webkit-transform: translateX(0) rotate(0);
-    transform: translateX(0) rotate(0);
+    -webkit-transform: rotate(0) translateX(0);
+    transform: rotate(0) translateX(0);
   }
 }
 @keyframes lineOneRemove {
   0% {
-    height: 10px;
-    -webkit-transform: translateX(-1.5px) translateY(13.5px) rotate(320deg);
-    transform: translateX(-1.5px) translateY(13.5px) rotate(320deg);
+    -webkit-transform: rotate(25deg) translateX(6.5px);
+    transform: rotate(25deg) translateX(6.5px);
   }
   100% {
-    height: 25px;
-    -webkit-transform: translateX(0) rotate(0);
-    transform: translateX(0) rotate(0);
+    -webkit-transform: rotate(0) translateX(0);
+    transform: rotate(0) translateX(0);
   }
 }
 
 @-webkit-keyframes lineTwo {
   0% {
-    -webkit-transform: translateX(-2.5px) rotate(90deg);
-    transform: translateX(-2.5px) rotate(90deg);
+    -webkit-transform: translateX(-2.5px) translateY(0px) rotate(90deg)
+      scaleY(1);
+    transform: translateX(-2.5px) translateY(0px) rotate(90deg) scaleY(1);
   }
   100% {
-    -webkit-transform: translateX(5px) translateY(0px) rotate(390deg);
-    transform: translateX(5px) translateY(0px) rotate(390deg);
+    -webkit-transform: translateX(-4.5px) translateY(8px) rotate(510deg)
+      scaleY(0.5);
+    transform: translateX(-4.5px) translateY(8px) rotate(510deg) scaleY(0.5);
   }
 }
 @keyframes lineTwo {
   0% {
-    -webkit-transform: translateX(-2.5px) rotate(90deg);
-    transform: translateX(-2.5px) rotate(90deg);
+    -webkit-transform: translateX(-2.5px) translateY(0px) rotate(90deg)
+      scaleY(1);
+    transform: translateX(-2.5px) translateY(0px) rotate(90deg) scaleY(1);
   }
   100% {
-    -webkit-transform: translateX(5px) translateY(0px) rotate(390deg);
-    transform: translateX(5px) translateY(0px) rotate(390deg);
+    -webkit-transform: translateX(-4.5px) translateY(8px) rotate(510deg)
+      scaleY(0.5);
+    transform: translateX(-4.5px) translateY(8px) rotate(510deg) scaleY(0.5);
   }
 }
 @-webkit-keyframes lineTwoRemove {
   0% {
-    -webkit-transform: translateX(5px) translateY(0px) rotate(390deg);
-    transform: translateX(5px) translateY(0px) rotate(390deg);
+    -webkit-transform: translateX(-4.5px) translateY(8px) rotate(510deg)
+      scaleY(0.5);
+    transform: translateX(-4.5px) translateY(8px) rotate(510deg) scaleY(0.5);
   }
   100% {
-    -webkit-transform: translateX(-2.5px) rotate(90deg);
-    transform: translateX(-2.5px) rotate(90deg);
+    -webkit-transform: translateX(-2.5px) translateY(0px) rotate(90deg)
+      scaleY(1);
+    transform: translateX(-2.5px) translateY(0px) rotate(90deg) scaleY(1);
   }
 }
 @keyframes lineTwoRemove {
   0% {
-    -webkit-transform: translateX(5px) translateY(0px) rotate(390deg);
-    transform: translateX(5px) translateY(0px) rotate(390deg);
+    -webkit-transform: translateX(-4.5px) translateY(8px) rotate(510deg)
+      scaleY(0.5);
+    transform: translateX(-4.5px) translateY(8px) rotate(510deg) scaleY(0.5);
   }
   100% {
-    -webkit-transform: translateX(-2.5px) rotate(90deg);
-    transform: translateX(-2.5px) rotate(90deg);
+    -webkit-transform: translateX(-2.5px) translateY(0px) rotate(90deg)
+      scaleY(1);
+    transform: translateX(-2.5px) translateY(0px) rotate(90deg) scaleY(1);
   }
+}
+
+.controls {
+  height: 5%;
+  width: 90%;
+  border: 1px solid #e7f6f2;
+}
+
+.memoryContainer {
+  height: fit-content;
+  width: fit-content;
+  border: none;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  gap: 0.78rem;
+  border: 2px solid red;
+}
+
+.memory {
+  height: 25px;
+  width: 25px;
+  border-radius: 2rem;
+  background-color: #a5c9ca;
 }
