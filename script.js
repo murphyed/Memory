@@ -6,14 +6,11 @@ const arrayContainer = document.getElementById("arrayContainer");
 const objectContainer = document.getElementById("objectContainer");
 const fixedContainer = document.querySelector(".container-two");
 const dyContainer = document.querySelector(".container");
-
-
-
-
-
+const bitType = Number(document.getElementById("bit-type").value);
+const dataType = document.getElementById("data-type").value;
+const userValue = document.getElementById("userValue");
 
 //Scroll Effect
-
 function lerp(start, end, t) {
   return start * (1 - t) + end * t;
 }
@@ -56,6 +53,7 @@ animate();
 //Animation for button
 button.addEventListener("click", () => {
   if (inputField.value !== "") {
+    onSubmit();
     lineOne.classList.add("lineOneAdded");
     lineTwo.classList.add("lineTwoAdded");
     inputField.value = "";
@@ -72,4 +70,33 @@ for (let i = 0; i < 800; i++) {
   const memorySlot = document.createElement("div");
   memorySlot.setAttribute("class", "memory");
   arrayContainer.appendChild(memorySlot);
+}
+
+
+//Getting user input
+function onSubmit() {
+
+  let bit = bitType;
+  let data = dataType;
+  let value = userValue.value;
+
+
+  return bit, data, value;
+}
+
+
+function toBinary(number) {
+  const remainders = [];
+  let numValue = number
+  if (numValue === 0) {
+    remainders.push(0);
+  }
+  while (numValue != 0) {
+    let quotient = Math.floor(numValue / 2);
+    let remainder = numValue % 2;
+    numValue = quotient;
+    remainders.push(remainder);
+  }
+  const binaryValue = remainders.reverse().join('');
+  return binaryValue
 }
