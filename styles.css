@@ -52,8 +52,7 @@ main {
 
 .container-two {
   display: flex;
-  justify-content: center;
-  padding: 1rem;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   height: 100vh;
@@ -329,9 +328,57 @@ button {
 }
 
 .controls {
-  height: 5%;
+  height: 11%;
   width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
   /* border: 1px solid #e7f6f2; */
+}
+
+#arrayBtn {
+  border: 2px solid #a5c9ca;
+  height: 35px;
+  width: 120px;
+  border-radius: 2rem;
+  font-size: 1rem;
+  justify-content: center;
+  align-items: center;
+  transition: background-color, color, box-shadow, 200ms ease-in;
+  font-family: "Oxygen", sans-serif;
+  letter-spacing: 0.01rem;
+}
+#objectBtn {
+  border: 2px solid #a5c9ca;
+  height: 35px;
+  width: 120px;
+  font-size: 1rem;
+  border-radius: 2rem;
+  justify-content: center;
+  align-items: center;
+  transition: background-color, color, box-shadow, 250ms ease-in;
+  font-family: "Oxygen", sans-serif;
+  letter-spacing: 0.01rem;
+}
+
+.activeBtn {
+  background-color: #2c3333;
+  color: #a5c9ca;
+  box-shadow: 0 0 100px #a5c9ca;
+}
+.inactiveBtn {
+  color: #2c3333;
+  background-color: #a5c9ca;
+  box-shadow: 0 0 0 transparent;
+}
+
+.lineBreak {
+  height: 40px;
+  width: 3px;
+  background-color: #a5c9ca;
+  border-radius: 1rem;
+  border: none;
 }
 
 .memoryContainer {
@@ -350,7 +397,8 @@ button {
   background-color: #a5c9ca;
   cursor: pointer;
   border: 2px solid #a5c9ca;
-  transition: background-color, transform, border, 300ms;
+  transition: background-color, transform, border,
+    500ms cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .memory:hover {

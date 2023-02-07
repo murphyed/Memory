@@ -27,8 +27,8 @@
         <div class="option-type">
           <label for="bit-type">Select a data structure:</label>
           <select name="bit-type" id="data-type">
+            <option value="linked-list">Linked-list</option>
             <option value="array">Array</option>
-            <option value="object">Object</option>
           </select>
         </div>
         <div class="userInput">
@@ -43,7 +43,11 @@
       </div>
     </section>
     <section class="container-two">
-      <div class="controls"></div>
+      <div class="controls">
+        <button id="arrayBtn" class="activeBtn">Array</button>
+        <hr class="lineBreak">
+        <button id="objectBtn" class="inactiveBtn">Linked-list</button>
+      </div>
       <div id="arrayContainer" class="memoryContainer"></div>
       <div id="objectContainer" class="memoryContainer"></div>
     </section>

@@ -9,6 +9,8 @@ const dyContainer = document.querySelector(".container");
 const bitType = Number(document.getElementById("bit-type").value);
 const dataType = document.getElementById("data-type").value;
 const userValue = document.getElementById("userValue");
+const arrayBtn = document.getElementById("arrayBtn");
+const objectBtn = document.getElementById("objectBtn");
 
 //Scroll Effect
 function lerp(start, end, t) {
@@ -65,6 +67,25 @@ button.addEventListener("click", () => {
   }
 })
 
+
+//View buttons
+arrayBtn.addEventListener("click", () => {
+  if (!arrayBtn.classList.contains("activeBtn")) {
+    arrayBtn.classList.add("activeBtn");
+    arrayBtn.classList.remove("inactiveBtn");
+    objectBtn.classList.add("inactiveBtn");
+    objectBtn.classList.remove("activeBtn");
+  }
+})
+objectBtn.addEventListener("click", () => {
+  if (!objectBtn.classList.contains("activeBtn")) {
+    objectBtn.classList.add("activeBtn");
+    objectBtn.classList.remove("inactiveBtn");
+    arrayBtn.classList.add("inactiveBtn");
+    arrayBtn.classList.remove("activeBtn");
+  }
+})
+
 //Creating memory slots
 for (let i = 0; i < 800; i++) {
   const memorySlot = document.createElement("div");
@@ -75,12 +96,9 @@ for (let i = 0; i < 800; i++) {
 
 //Getting user input
 function onSubmit() {
-
   let bit = bitType;
   let data = dataType;
   let value = userValue.value;
-
-
   return bit, data, value;
 }
 
@@ -100,3 +118,4 @@ function toBinary(number) {
   const binaryValue = remainders.reverse().join('');
   return binaryValue
 }
+
