@@ -19,7 +19,7 @@
       <div class="options" id="options">
         <div class="option-type">
           <label for="bit-type">Select a bit type:</label>
-          <select name="bit-type" id="bit-type" class="custom-select">
+          <select name="bit-type" id="bit-type" class="custom-select" disabled>
             <option value="32">32-Bit</option>
             <option value="64">64-Bit</option>
           </select>
@@ -27,8 +27,8 @@
         <div class="option-type">
           <label for="bit-type">Select a data structure:</label>
           <select name="bit-type" id="data-type">
-            <option value="linked-list">Linked-list</option>
-            <option value="array">Array</option>
+            <option value="array" selected>Array</option>
+            <option value="linked-list" disabled>Linked-list</option>
           </select>
         </div>
         <div class="userInput">
@@ -48,8 +48,33 @@
         <hr class="lineBreak">
         <button id="objectBtn" class="inactiveBtn">Linked-list</button>
       </div>
+
+
       <div id="arrayContainer" class="memoryContainer"></div>
-      <div id="objectContainer" class="memoryContainer"></div>
+
+
+      <!-- <div id="linkedContainer" class="memoryContainer"></div> -->
+
+
+      <div id="slotContainer" class="memoryView hidden">
+        <div class="memoryInfo">
+          <button id="close">
+            <div class="closeLines">
+              <div class="cLineOne"></div>
+              <div class="cLineTwo"></div>
+            </div>
+          </button>
+          <div class="sValue">
+            <p id="slotNumber"></p>
+          </div>
+          <div class="iValue">
+            <span class="binaryValue"></span>
+          </div>
+          <div class="dValue">
+            <span class="decimalValue"></span>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
   <script src="./script.js"></script>

@@ -11,6 +11,9 @@ const dataType = document.getElementById("data-type").value;
 const userValue = document.getElementById("userValue");
 const arrayBtn = document.getElementById("arrayBtn");
 const objectBtn = document.getElementById("objectBtn");
+const closeBtn = document.getElementById("close");
+const slotContainer = document.getElementById("slotContainer");
+const slotNumber = document.getElementById("slotNumber");
 
 //Scroll Effect
 function lerp(start, end, t) {
@@ -45,7 +48,7 @@ function animate() {
   current = parseFloat(lerp(current, target, ease).toFixed(2));
   target = window.scrollY;
   setTransform(dyContainer, `translateX(-${current}px)`);
-  setBorderRadius(dyContainer, `0 ${current}px ${current}px 0`)
+  setBorderRadius(dyContainer, `0 ${current}px ${current}px 0`);
   requestAnimationFrame(animate);
 }
 
@@ -86,24 +89,27 @@ objectBtn.addEventListener("click", () => {
   }
 })
 
+//Close slot button
+closeBtn.addEventListener("click", () => {
+  slotContainer.classList.add("hidden");
+})
+
+
 //Creating memory slots
-for (let i = 0; i < 800; i++) {
+for (let i = 1; i < 801; i++) {
   const memorySlot = document.createElement("div");
   memorySlot.setAttribute("class", "memory");
+  memorySlot.setAttribute("id", `slot${i}`);
+
+  memorySlot.addEventListener("click", () => {
+    slotContainer.classList.remove("hidden");
+    slotNumber.innerText = `address: ${numberBinary(i)}`;
+  })
   arrayContainer.appendChild(memorySlot);
 }
 
-
-//Getting user input
-function onSubmit() {
-  let bit = bitType;
-  let data = dataType;
-  let value = userValue.value;
-  return bit, data, value;
-}
-
-
-function toBinary(number) {
+//number to binary
+function numberBinary(number) {
   const remainders = [];
   let numValue = number
   if (numValue === 0) {
@@ -119,3 +125,94 @@ function toBinary(number) {
   return binaryValue
 }
 
+//String to binary
+function stringBinary(string) {
+  const stringChars = [...string];
+  let binaryString = "";
+  for (let i = 0; i < stringChars.length; i++) {
+    let charInt = `${stringChars[i]}`.charCodeAt(0);
+    let charBinary = numberBinary(charInt);
+    binaryString += charBinary;
+  }
+  return binaryString
+}
+
+
+//Value retreival
+function valueRetreival(value) {
+  if (isNaN(value)) {
+    const stringV = stringBinary(value);
+    document.querySelector(".decimalValue").innerHTML = value;
+    document.querySelector(".binaryValue").innerHTML = stringV;
+  } else {
+    const numberV = numberBinary(value);
+    document.querySelector(".decimalValue").innerHTML = value;
+    document.querySelector(".binaryValue").innerHTML = numberV;
+  }
+}
+
+
+//ARRAY ALGORITHM
+//First we generate a random number 
+let numbers = [];
+function randomNumbersArray(amount) {
+  //Resetting previous UI slots
+  if (numbers.length !== 0) {
+    for (let i = 0; i < numbers.length; i++) {
+      const slot = document.getElementById(`slot${numbers[i]}`);
+      slot.classList.remove("memoryInUse");
+      slot.classList.add("memory");
+    }
+    //Reseting numbers Array
+    numbers = [];
+  }
+
+  let randomNumber = Math.floor(Math.random() * 801);
+
+  if (amount > 256) {
+    randomNumber = Math.floor(Math.random() * 10);
+  }
+  //Second increment generated number x times based on index
+  for (let i = 0; i < amount; i++) {
+    let sequencedNumber = randomNumber;
+    sequencedNumber += i;
+    numbers.push(sequencedNumber);
+  }
+
+  // Updating UI to show which memory slots are in use
+  for (let i = 0; i < numbers.length; i++) {
+    const slot = document.getElementById(`slot${numbers[i]}`);
+    slot.classList.remove("memory");
+    slot.classList.add("memoryInUse");
+  }
+
+  return numbers
+}
+
+//Re-allocate array space when elements array gets full
+let allocation = 2;
+function reallocate() {
+  randomNumbersArray(allocation);
+  allocation *= 2;
+}
+
+//Checking allocation status
+const arrayValues = []
+function checkMemoryStatus() {
+  if (arrayValues.length === 1) {
+    reallocate();
+  } else if (arrayValues.length === allocation / 2) {
+    reallocate();
+  }
+}
+
+
+//Getting user input
+function onSubmit() {
+  // let bit = bitType;
+  // let data = dataType;
+  let value = userValue.value;
+  arrayValues.push(value);
+  checkMemoryStatus();
+  // return bit, data, value;
+}
