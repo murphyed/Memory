@@ -91,6 +91,8 @@ objectBtn.addEventListener("click", () => {
 
 //Close slot button
 closeBtn.addEventListener("click", () => {
+  document.querySelector(".decimalValue").innerHTML = "";
+  document.querySelector(".binaryValue").innerHTML = "";
   slotContainer.classList.add("hidden");
 })
 
@@ -140,14 +142,19 @@ function stringBinary(string) {
 
 //Value retreival
 function valueRetreival(value) {
-  if (isNaN(value)) {
-    const stringV = stringBinary(value);
-    document.querySelector(".decimalValue").innerHTML = value;
-    document.querySelector(".binaryValue").innerHTML = stringV;
+  if (value === undefined) {
+    document.querySelector(".decimalValue").innerHTML = "allocated";
+    document.querySelector(".binaryValue").innerHTML = "...";
   } else {
-    const numberV = numberBinary(value);
-    document.querySelector(".decimalValue").innerHTML = value;
-    document.querySelector(".binaryValue").innerHTML = numberV;
+    if (isNaN(value)) {
+      const stringV = stringBinary(value);
+      document.querySelector(".decimalValue").innerHTML = value;
+      document.querySelector(".binaryValue").innerHTML = stringV;
+    } else {
+      const numberV = numberBinary(value);
+      document.querySelector(".decimalValue").innerHTML = value;
+      document.querySelector(".binaryValue").innerHTML = numberV;
+    }
   }
 }
 
@@ -185,7 +192,6 @@ function randomNumbersArray(amount) {
     slot.classList.remove("memory");
     slot.classList.add("memoryInUse");
   }
-
   return numbers
 }
 
@@ -214,5 +220,16 @@ function onSubmit() {
   let value = userValue.value;
   arrayValues.push(value);
   checkMemoryStatus();
+  readingValues(numbers);
   // return bit, data, value;
 }
+
+function readingValues(numbers) {
+  for (let i = 0; i < numbers.length; i++) {
+    let slot = document.getElementById(`slot${numbers[i]}`);
+    slot.addEventListener("click", () => {
+      valueRetreival(arrayValues[i]);
+    })
+  }
+}
+
