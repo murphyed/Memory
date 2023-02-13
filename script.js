@@ -117,7 +117,7 @@ function numberBinary(number) {
   if (numValue === 0) {
     remainders.push(0);
   }
-  while (numValue != 0) {
+  while (numValue !== 0) {
     let quotient = Math.floor(numValue / 2);
     let remainder = numValue % 2;
     numValue = quotient;
@@ -134,7 +134,7 @@ function stringBinary(string) {
   for (let i = 0; i < stringChars.length; i++) {
     let charInt = `${stringChars[i]}`.charCodeAt(0);
     let charBinary = numberBinary(charInt);
-    binaryString += charBinary;
+    binaryString += "0" + charBinary;
   }
   return binaryString
 }
@@ -168,6 +168,7 @@ function randomNumbersArray(amount) {
     for (let i = 0; i < numbers.length; i++) {
       const slot = document.getElementById(`slot${numbers[i]}`);
       slot.classList.remove("memoryInUse");
+      slot.classList.remove("allocatedMemory");
       slot.classList.add("memory");
     }
     //Reseting numbers Array
@@ -191,7 +192,14 @@ function randomNumbersArray(amount) {
     const slot = document.getElementById(`slot${numbers[i]}`);
     slot.classList.remove("memory");
     slot.classList.add("memoryInUse");
+
+    if (i >= numbers.length / 2) {
+      slot.classList.remove("memoryInUse");
+      slot.classList.add("allocatedMemory");
+    }
   }
+
+
   return numbers
 }
 
@@ -212,18 +220,7 @@ function checkMemoryStatus() {
   }
 }
 
-
-//Getting user input
-function onSubmit() {
-  // let bit = bitType;
-  // let data = dataType;
-  let value = userValue.value;
-  arrayValues.push(value);
-  checkMemoryStatus();
-  readingValues(numbers);
-  // return bit, data, value;
-}
-
+//Reading values from user inputs
 function readingValues(numbers) {
   for (let i = 0; i < numbers.length; i++) {
     let slot = document.getElementById(`slot${numbers[i]}`);
@@ -233,3 +230,23 @@ function readingValues(numbers) {
   }
 }
 
+//Update allocated Slots
+function updateAllocatedSlots(valuesArray) {
+  let lastIndex = valuesArray.length;
+  let allocatedSlot = numbers[lastIndex - 1];
+  let slot = document.getElementById(`slot${allocatedSlot}`);
+  slot.classList.remove("allocatedMemory");
+  slot.classList.add("memoryInUse");
+}
+
+//Getting user input
+function onSubmit() {
+  // let bit = bitType;
+  // let data = dataType;
+  let value = userValue.value;
+  arrayValues.push(value);
+  checkMemoryStatus();
+  readingValues(numbers);
+  updateAllocatedSlots(arrayValues);
+  // return bit, data, value;
+}
