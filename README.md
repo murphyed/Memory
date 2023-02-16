@@ -11,4 +11,4 @@ is a data structure that consists of a sequence of nodes, each of which contains
 
 # Issues
 1. website needs to be repsonsive for mobile as well as large screens.
-2. Figure out mobile functionality for the hover aspect of the linked-list.
+2. Figure out mobile functionality for the hover aspect of dark circles (pointers) in the linked-list.
