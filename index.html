@@ -14,7 +14,8 @@
     <section class="container">
       <div class="subContainer">
         <h1>Memory</h1>
-        <h2>a visual representation of how data is stored under the hood.</h2>
+        <h2>a visual representation of how data is stored in memory</h2>
+        <h2>using (dynamic) arrays & (singly) linked-lists.</h2>
       </div>
       <div class="options" id="options">
         <div class="option-type">
@@ -27,8 +28,8 @@
         <div class="option-type">
           <label for="bit-type">Select a data structure:</label>
           <select name="bit-type" id="data-type">
-            <option value="array" selected>Array</option>
-            <option value="linked-list" disabled>Linked-list</option>
+            <option value="0" id="array">Array</option>
+            <option value="1" id="linked">Linked-list</option>
           </select>
         </div>
         <div class="userInput">
@@ -53,7 +54,7 @@
       <div id="arrayContainer" class="memoryContainer"></div>
 
 
-      <!-- <div id="linkedContainer" class="memoryContainer"></div> -->
+      <div id="linkedContainer" class="memoryContainer remove"></div>
 
 
       <div id="slotContainer" class="memoryView hidden">
