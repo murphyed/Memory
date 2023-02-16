@@ -8,3 +8,7 @@ is an array that can grow or shrink in size at runtime. When elements are added 
 
 Singly linked list: 
 is a data structure that consists of a sequence of nodes, each of which contains a value and a reference to the next node in the list. The first node is called the head of the list, and the last node's reference points to null. 
+
+# Issues
+1. website needs to be repsonsive for mobile as well as large screens.
+2. Figure out mobile functionality for the hover aspect of the linked-list.
