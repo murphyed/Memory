@@ -97,14 +97,14 @@ closeBtn.addEventListener("click", () => {
 
 
 //Creating memory slots
-for (let i = 1; i < 801; i++) {
+for (let i = 0; i < 800; i++) {
   const memorySlot = document.createElement("div");
   memorySlot.setAttribute("class", "memory");
   memorySlot.setAttribute("id", `slot${i}`);
 
   memorySlot.addEventListener("click", () => {
     slotContainer.classList.remove("hidden");
-    slotNumber.innerText = `address: ${numberBinary(i)}`;
+    slotNumber.innerText = `address: ${toHex(i)}`;
   })
   arrayContainer.appendChild(memorySlot);
 
@@ -118,6 +118,20 @@ for (let i = 1; i < 801; i++) {
 
   linkedContainer.appendChild(lMemorySlot);
 }
+
+
+//number to Hex
+function toHex(number) {
+  const hexValues = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
+  const remainders = [];
+  while (number > 0) {
+    remainders.push(hexValues[number % 16]);
+    number = Math.floor(number / 16);
+  }
+  return remainders.reverse().join("");
+}
+
+
 
 //number to binary
 function numberBinary(number) {
