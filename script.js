@@ -104,7 +104,12 @@ for (let i = 0; i < 800; i++) {
 
   memorySlot.addEventListener("click", () => {
     slotContainer.classList.remove("hidden");
-    slotNumber.innerText = `address: ${toHex(i)}`;
+    if (i === 0) {
+      slotNumber.innerText = `address: 0`;
+    } else {
+      slotNumber.innerText = `address: ${toHex(i)}`;
+    }
+
   })
   arrayContainer.appendChild(memorySlot);
 
@@ -131,6 +136,7 @@ function toHex(number) {
   return remainders.reverse().join("");
 }
 
+console.log(toHex(0))
 
 
 //number to binary
